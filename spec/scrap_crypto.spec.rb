@@ -1,8 +1,6 @@
-require 'rubygems'
-require 'nokogiri'
-require 'open-uri'
-   
-doc = Nokogiri::HTML(open("https://coinmarketcap.com/all/views/all/")) #la page a scrapper
-doc.xpath('//h3/a').each do |node|
-	  puts node.text
+require_relative '../lib/scrap_crypto'
+describe "the crypto_scrapper method " do
+	it "should return an array with hashes" do
+		expect(crypto_scrapper).not_to be_empty
 	end
+end
