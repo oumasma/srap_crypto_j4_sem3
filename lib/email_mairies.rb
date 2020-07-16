@@ -11,7 +11,8 @@ townhall_email = page.xpath("/html/body/div/main/section[2]/div/table/tbody/tr[4
 
 #def get_townhall_urls
 	page = Nokogiri::HTML(open("https://www.annuaire-des-mairies.com/val-d-oise.html"))
-townhall_url = page.xpath('//a[@class="lientxt"]')
+townhall_list = page.xpath('//a[@class="lientxt"]')
+url = townhall_list.search('a[href]').select{ |n| n['href'][/.html$/] }.map{ |n| n['href'] }
 
- puts townhall_url
+	print url
 #end
